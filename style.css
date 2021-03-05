@@ -8,5 +8,22 @@ ul {
 }
 
 li {
-    margin: 5px 0;
+    margin: 5px 0;    
+}
+
+li .material-icons {
+    padding: 0;
+    display: inline-block;
+    font-size: 21px;
+    margin-left: -25px;
+}
+
+li .material-icons:hover {
+    cursor: pointer;
+}
+
+li input, label {
+    line-height: 21px;
+    vertical-align:top;
+    font-size: 13px;
 }

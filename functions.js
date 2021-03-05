@@ -95,3 +95,38 @@ function checkJSPuro() {
 
 //All credits goes to CSSTricks and its sources
 //https://css-tricks.com/indeterminate-checkboxes/
+
+
+function itemsAccordeon() {
+    var allSpan = document.getElementsByTagName('span');
+
+    for(var x = 0; x < allSpan.length; x++)
+    {
+        //verifica se o elemento possui nós filhos. Caso contrário, não exibe o span e não inclui evento de onClick                 
+        if (!allSpan[x].parentNode.getElementsByTagName('LI').length > 0) {
+            allSpan[x].style.display="none"
+        
+            allSpan[x].onclick=function()
+            {
+                if(this.parentNode)            
+                {
+                    var childList = this.parentNode.getElementsByTagName('LI');
+                    for(var y = 0; y< childList.length;y++)                
+                    {
+                        var currentState = childList[y].style.display;
+                        if(currentState=="none")
+                        {
+                            childList[y].style.display="block";
+                            this.innerHTML = "arrow_drop_down";
+                        }
+                        else
+                        {
+                            childList[y].style.display="none";
+                            this.innerHTML = "arrow_right";
+                        }
+                    }
+                }
+            }    
+        }
+    }
+}
