@@ -52,7 +52,7 @@ $('input[type="checkbox"]').change(function(e) {
 //Nest checkboxes with pure JS
 function checkJSPuro() {    
     //helper function to create nodeArrays (not collections)
-    const nodeArray = (selector, parent=document) => [].slice.call(parent.querySelectorAll(selector));
+    const nodeArray = (selector, parent=document) => [].slice.call(parent.querySelectorAll(selector));    
 
     //checkboxes of interest
     const allThings = nodeArray('input');
@@ -104,29 +104,29 @@ function itemsAccordeon() {
     {
         //verifica se o elemento possui nós filhos. Caso contrário, não exibe o span e não inclui evento de onClick                 
         if (!allSpan[x].parentNode.getElementsByTagName('LI').length > 0) {
-            allSpan[x].style.display="none"
-        
-            allSpan[x].onclick=function()
+            allSpan[x].style.display="none"            
+        }
+        allSpan[x].onclick=function()
+        {
+            console.log("ok");
+            if(this.parentNode)            
             {
-                if(this.parentNode)            
+                var childList = this.parentNode.getElementsByTagName('LI');
+                for(var y = 0; y< childList.length;y++)                
                 {
-                    var childList = this.parentNode.getElementsByTagName('LI');
-                    for(var y = 0; y< childList.length;y++)                
+                    var currentState = childList[y].style.display;
+                    if(currentState=="none")
                     {
-                        var currentState = childList[y].style.display;
-                        if(currentState=="none")
-                        {
-                            childList[y].style.display="block";
-                            this.innerHTML = "arrow_drop_down";
-                        }
-                        else
-                        {
-                            childList[y].style.display="none";
-                            this.innerHTML = "arrow_right";
-                        }
+                        childList[y].style.display="block";
+                        this.innerHTML = "arrow_drop_down";
+                    }
+                    else
+                    {
+                        childList[y].style.display="none";
+                        this.innerHTML = "arrow_right";
                     }
                 }
-            }    
-        }
+            }
+        }            
     }
 }
